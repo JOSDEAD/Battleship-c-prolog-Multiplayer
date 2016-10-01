@@ -1,0 +1,9 @@
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\bin\Debug\BatallaNaval.exe.config
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\bin\Debug\BatallaNaval.exe
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\bin\Debug\BatallaNaval.pdb
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.csprojResolveAssemblyReference.cache
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.Form1.resources
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.Properties.Resources.resources
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.csproj.GenerateResource.Cache
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.exe
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.pdb

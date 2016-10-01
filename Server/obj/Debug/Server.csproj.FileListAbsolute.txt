@@ -1,0 +1,6 @@
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\Server\bin\Debug\Server.exe.config
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\Server\bin\Debug\Server.exe
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\Server\bin\Debug\Server.pdb
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\Server\obj\Debug\Server.exe
+c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\Server\obj\Debug\Server.pdb
+C:\Users\jomi_\Documents\Visual Studio 2015\Projects\BatallaNaval\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
