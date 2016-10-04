@@ -14,8 +14,9 @@ namespace Server
         private static readonly Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static readonly List<Socket> clientSockets = new List<Socket>();
         private const int BUFFER_SIZE = 2048;
-        private const int PORT = 100;
+        private const int PORT = 8080;
         private static readonly byte[] buffer = new byte[BUFFER_SIZE];
+        private static Dictionary<string, Socket> conectados = new Dictionary<string, Socket>();
 
         static void Main()
         {
@@ -126,6 +127,27 @@ namespace Server
                 clientSockets.Remove(current);
                 Console.WriteLine("Client disconnected");
                 return;
+            }
+            else if (text.ToLower() == "prueba") // Client wants to exit gracefully
+            {
+                byte[] data = Encoding.ASCII.GetBytes("exit");
+                Socket current1 = clientSockets[1];
+                current1.Send(data);
+            }
+            else if (text.Contains("nombre")) // nombre del cliente
+            {
+                if (conectados.ContainsKey(text.Remove(0, 6)))
+                {
+                    byte[] data = Encoding.ASCII.GetBytes("false");
+                    current.Send(data);
+                }
+                else
+                {
+                    conectados.Add(text.Remove(0, 6), current);
+                    Console.WriteLine("Cliente " + text.Remove(0, 6) + " conectado");
+                    byte[] data = Encoding.ASCII.GetBytes("ok");
+                    current.Send(data);
+                }
             }
             else
             {

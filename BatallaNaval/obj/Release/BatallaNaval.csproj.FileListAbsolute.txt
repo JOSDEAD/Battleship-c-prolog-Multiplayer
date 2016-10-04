@@ -1,0 +1,9 @@
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\bin\Release\BatallaNaval.exe.config
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\bin\Release\BatallaNaval.exe
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\bin\Release\BatallaNaval.pdb
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Release\BatallaNaval.csprojResolveAssemblyReference.cache
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Release\BatallaNaval.Form1.resources
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Release\BatallaNaval.Properties.Resources.resources
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Release\BatallaNaval.csproj.GenerateResource.Cache
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Release\BatallaNaval.exe
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Release\BatallaNaval.pdb

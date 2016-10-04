@@ -7,3 +7,13 @@ c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\o
 c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.csproj.GenerateResource.Cache
 c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.exe
 c:\users\jomi_\documents\visual studio 2015\Projects\BatallaNaval\BatallaNaval\obj\Debug\BatallaNaval.pdb
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\bin\Debug\BatallaNaval.exe.config
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Debug\BatallaNaval.exe
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Debug\BatallaNaval.pdb
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\bin\Debug\BatallaNaval.exe
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\bin\Debug\BatallaNaval.pdb
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Debug\BatallaNaval.csprojResolveAssemblyReference.cache
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Debug\BatallaNaval.Form1.resources
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Debug\BatallaNaval.Properties.Resources.resources
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Debug\BatallaNaval.csproj.GenerateResource.Cache
+C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\BatallaNaval\obj\Debug\BatallaNaval.Inicio.resources
