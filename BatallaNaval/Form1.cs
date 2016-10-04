@@ -13,6 +13,7 @@ namespace BatallaNaval
 {
     public partial class Form1 : Form
     {
+        static Cliente cliente;
         public int[,] tablero = new int[3, 3] {
                  
              { 0, 0, 0 },
@@ -25,6 +26,7 @@ namespace BatallaNaval
            
             InitializeComponent();
             cargar();
+            cliente = Cliente.Instance;
         }
 
         public void cargar()
@@ -91,7 +93,7 @@ namespace BatallaNaval
         {
            
             byte[] a = ToByteArray(tablero);
-            Cliente.SendMatrix(a);
+            cliente.SendMatrix(a);
         }
     }
 }
