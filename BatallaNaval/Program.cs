@@ -14,10 +14,9 @@ namespace BatallaNaval
         [STAThread]
         static void Main()
         {
-            
+            Cliente.ConnectToServer();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Inicio());
             Application.Run(new Form1());
         }
     }
