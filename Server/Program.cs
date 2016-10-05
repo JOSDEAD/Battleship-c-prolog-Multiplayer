@@ -14,7 +14,7 @@ namespace Server
         private static readonly Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static readonly List<Socket> clientSockets = new List<Socket>();
         private const int BUFFER_SIZE = 2048;
-        private const int PORT = 8080;
+        private const int PORT = 100;
         private static readonly byte[] buffer = new byte[BUFFER_SIZE];
         private static Dictionary<string, Socket> conectados = new Dictionary<string, Socket>();
 
@@ -115,8 +115,8 @@ namespace Server
             {
                 Console.WriteLine("Text is a get time request");
                 byte[] data = Encoding.ASCII.GetBytes(DateTime.Now.ToLongTimeString());
-                Socket current1 = clientSockets[1];
-                current1.Send(data);
+                
+                current.Send(data);
                 Console.WriteLine("Time sent to client");
             }
             else if (text.ToLower() == "exit") // Client wants to exit gracefully
