@@ -39,12 +39,16 @@ namespace BatallaNaval
 
                     Button button = new Button();
                     button.Tag = i.ToString() + "," + j.ToString();
-                    button.Height = 80;
-                    button.Width = 80;
+                    button.Height = 100;
+                    button.Width = 100;
                     button.Margin = new System.Windows.Forms.Padding(0);
                     button.FlatStyle = FlatStyle.Flat;
                     button.FlatAppearance.BorderSize = 0;
-                    button.Text = tablero[i,j].ToString();
+                    if(tablero[i,j]==0)
+                        button.BackgroundImage= ((System.Drawing.Image)(Properties.Resources.Water));
+                    else if(tablero[i,j]==1)
+                        button.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Battleship));
+                    button.Name = tablero[i, j].ToString();
                     button.Click += (s, e) =>
                     {
                         buttonAction(button);
@@ -58,13 +62,12 @@ namespace BatallaNaval
         private void buttonAction(Button button)
         {
             string[] c = button.Tag.ToString().Split(',');
-            if (button.Text == "0")
+            if (button.Name == "0")
             {
-
                 this.tablero[int.Parse(c[0]), int.Parse(c[1])] = 1;
             }
-            else if(button.Text=="1") {
-                tablero[int.Parse(c[0]), int.Parse(c[1])] = 0;
+            else if(button.Name == "1") {
+                this.tablero[int.Parse(c[0]), int.Parse(c[1])] = 0;
 
             }
             tableLayoutPanel1.Controls.Clear();

@@ -47,7 +47,7 @@ namespace BatallaNaval
                     attempts++;
                     Console.WriteLine("Connection attempt " + attempts);
                     // Change IPAddress.Loopback to a remote IP to connect to a remote host.
-                    ClientSocket.Connect("192.168.0.235", PORT);
+                    ClientSocket.Connect("192.168.0.101", PORT);
                 }
                 catch (SocketException)
                 {
