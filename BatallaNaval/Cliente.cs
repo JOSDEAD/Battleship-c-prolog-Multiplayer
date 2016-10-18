@@ -32,7 +32,7 @@ namespace BatallaNaval
         private static readonly Socket ClientSocket = new Socket
             (AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-        private const int PORT = 100;
+        private const int PORT = 8080;
 
 
 
@@ -47,7 +47,7 @@ namespace BatallaNaval
                     attempts++;
                     Console.WriteLine("Connection attempt " + attempts);
                     // Change IPAddress.Loopback to a remote IP to connect to a remote host.
-                    ClientSocket.Connect("192.168.0.101", PORT);
+                    ClientSocket.Connect("192.168.0.235", PORT);
                 }
                 catch (SocketException)
                 {

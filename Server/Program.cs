@@ -13,11 +13,12 @@ namespace Server
     {
         private static readonly Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         private static readonly List<Socket> clientSockets = new List<Socket>();
+        static partida partida;
         private const int BUFFER_SIZE = 2048;
-        private const int PORT = 100;
+        private const int PORT = 8080;
         private static readonly byte[] buffer = new byte[BUFFER_SIZE];
         private static Dictionary<string, Socket> conectados = new Dictionary<string, Socket>();
-
+        
         static void Main()
         {
             Console.Title = "Server";
@@ -67,7 +68,10 @@ namespace Server
                 return result;
             }
         }
+        private void update()
+        {
 
+        }
 
         private static void AcceptCallback(IAsyncResult AR)
         {
@@ -101,8 +105,10 @@ namespace Server
             {
                 Console.WriteLine("Cliente se desconecto a la fuerza");
                 // Don't shutdown because the socket may be disposed and its disconnected anyway.
+
                 current.Close();
                 clientSockets.Remove(current);
+
                 return;
             }
 
@@ -111,21 +117,28 @@ namespace Server
             string text = Encoding.ASCII.GetString(recBuf);
             Console.WriteLine("Solicitud recivida");
 
-            if (text.ToLower() == "get time") // Client requested time
-            {
-                Console.WriteLine("Text is a get time request");
-                byte[] data = Encoding.ASCII.GetBytes(DateTime.Now.ToLongTimeString());
-                
-                current.Send(data);
-                Console.WriteLine("Time sent to client");
-            }
-            else if (text.ToLower() == "exit") // Client wants to exit gracefully
+           
+             if (text.ToLower() == "exit") // Client wants to exit gracefully
             {
                 // Always Shutdown before closing
+
                 current.Shutdown(SocketShutdown.Both);
                 current.Close();
                 clientSockets.Remove(current);
                 Console.WriteLine("Client disconnected");
+
+                return;
+            }
+            else if (text.Contains("exit")) // Client wants to exit gracefully
+            {
+                // Always Shutdown before closing
+                string nombre = text.Remove(0, 4);
+                conectados.Remove(nombre);
+                current.Shutdown(SocketShutdown.Both);
+                current.Close();
+                clientSockets.Remove(current);
+                Console.WriteLine("Client disconnected");
+
                 return;
             }
             else if (text.ToLower() == "prueba") // Client wants to exit gracefully
@@ -143,31 +156,63 @@ namespace Server
                 }
                 else
                 {
-                    conectados.Add(text.Remove(0, 6), current);
-                    Console.WriteLine("Cliente " + text.Remove(0, 6) + " conectado");
+                    string nombre = text.Remove(0, 6);
+                    conectados.Add(nombre, current);
+                    Console.WriteLine("Cliente " + nombre + " conectado");
                     byte[] data = Encoding.ASCII.GetBytes("ok");
                     current.Send(data);
+                    
+                    foreach (KeyValuePair<string, Socket> g in conectados)
+                    {
+                        string users = "";
+                        foreach (string d in conectados.Keys)
+                        {
+                            if (g.Key != d)
+                                users += "|" + d;
+                        }
+                        if (users != "")
+                        {
+                            string peticion = "update" + users;
+                            g.Value.Send(Encoding.ASCII.GetBytes(peticion));
+                        }
+                    }
                 }
+            }
+            else if (text.Contains("invitacion"))
+            {
+                string temp = text.Remove(0, 10);
+                string[] lista = temp.Split('|');
+                conectados[lista[1]].Send(Encoding.ASCII.GetBytes("invitado"+lista[0]));
+            }
+            else if (text.Contains("acepto"))
+            {
+                string temp = text.Remove(0, 6);
+                string[] lista = temp.Split('|');
+                Jugador jugador1 = new Jugador(lista[0]);
+                Jugador jugador2 = new Jugador(lista[1]);
+                partida = new partida(jugador1, jugador2);
+                
+                conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("dificultad"));
+                conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes("espere"+partida.getJudador1().getJugador()));
+                
+            }
+            else if (text.Contains("crearMatrix"))
+            {
+                string temp = text.Remove(0, 11);
+                partida.setDificultad(temp);
+                conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("partida"+temp));
+                conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes("partida" + temp));
             }
             else
             {
 
 
-                /* if ( current.Equals(clientSockets[0])){
-                     Socket current1 = clientSockets[1];
-                     current1.Send(recBuf);
-                     Console.WriteLine("msg enviado to cliento 1");
-                 }
-                 if (current.Equals(clientSockets[1]))
-                 {
-                     Socket current1 = clientSockets[0];
-                     current1.Send(recBuf);
-                     Console.WriteLine("msg enviado to cliento 0");
-                 }*/
+
                 int[,] tablero = FromByteArray(recBuf);
-                for (int i = 0; i < 3; i++)
+                int[] temp = partida.getSize();
+                for (int i = 0; i < temp[0]; i++)
                 {
-                    for (int j = 0; j < 3; j++)
+                    for (int j = 0; j < temp[1]; j++)
                     {
                         Console.Write(tablero[i, j] + ",");
 
@@ -175,8 +220,43 @@ namespace Server
                     Console.WriteLine();
                 }
                 Console.WriteLine();
-                byte[] data = Encoding.ASCII.GetBytes("Gracias");
-                current.Send(data);
+                string solicitante="";
+                foreach(string a in conectados.Keys)
+                {
+                    if (conectados[a] == current)
+                        solicitante = a;
+                }
+                if (solicitante == partida.getJudador1().getJugador())
+                {
+                    
+                    partida.getJudador1().setStatus("listo");
+                    partida.getJudador1().setMatrix(tablero);
+                    if (partida.getJudador2().getStatus() == "listo")
+                    {
+                        conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("partida" ));
+                        conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes("partida" ));
+                    }
+                    else
+                    {
+                        conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes("listo"+ partida.getJudador1().getJugador()));
+                    }
+                }
+                else if (solicitante == partida.getJudador2().getJugador())
+                {
+                    partida.getJudador2().setStatus("listo");
+                    partida.getJudador2().setMatrix(tablero);
+                    if (partida.getJudador1().getStatus() == "listo")
+                    {
+                        conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("partida" ));
+                        conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes("partida" ));
+                    }
+                    else
+                    {
+                        conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("listo"+ partida.getJudador2().getJugador()));
+                    }
+                }
+
+
 
             }
 
