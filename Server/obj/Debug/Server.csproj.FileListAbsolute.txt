@@ -10,3 +10,11 @@ C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\Server\obj\Debug
 C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\Server\bin\Debug\Server.exe
 C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\Server\bin\Debug\Server.pdb
 C:\Users\jomi_\Documents\GitHub\Battleship-c-prolog-Multiplayer\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\bin\Debug\Server.exe.config
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\obj\Debug\Server.exe
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\obj\Debug\Server.pdb
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\bin\Debug\Server.exe
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\bin\Debug\Server.pdb
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\bin\Debug\SwiPlCs.dll
+C:\Users\anthony\Documents\Lenguajes\Battleship-c-prolog-Multiplayer\Server\bin\Debug\SwiPlCs.xml

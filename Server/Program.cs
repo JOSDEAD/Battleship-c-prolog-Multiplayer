@@ -21,6 +21,7 @@ namespace Server
         
         static void Main()
         {
+            PlConnection.borrarPl();
             Console.Title = "Server";
             SetupServer();
             Console.ReadLine(); // When we press enter close everything

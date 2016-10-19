@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SbsSW.SwiPlCs;
 
 namespace BatallaNaval
 {
@@ -179,11 +180,14 @@ namespace BatallaNaval
         }
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             DialogResult dialogResult = MessageBox.Show("¿Estas Listo?","listo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 byte[] a = ToByteArray(tablero);
                 cliente.SendMatrix(a);
+               
 
             }
             else if (dialogResult == DialogResult.No)
@@ -198,5 +202,12 @@ namespace BatallaNaval
             cliente.SendString("exit" + perfil.Instance.getname());
             th.Abort();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+       
     }
 }
