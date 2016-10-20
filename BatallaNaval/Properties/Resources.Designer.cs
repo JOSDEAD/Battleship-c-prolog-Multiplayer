@@ -73,9 +73,29 @@ namespace BatallaNaval.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BattleshipHit {
+            get {
+                object obj = ResourceManager.GetObject("BattleshipHit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Water {
             get {
                 object obj = ResourceManager.GetObject("Water", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WaterMiss {
+            get {
+                object obj = ResourceManager.GetObject("WaterMiss", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

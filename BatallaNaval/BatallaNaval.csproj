@@ -33,6 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SwiPlCs, Version=1.1.5990.0, Culture=neutral, PublicKeyToken=03ea137181587c56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\SWI.Prolog.1.1.5990\lib\net35\SwiPlCs.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +64,12 @@
     <Compile Include="Inicio.Designer.cs">
       <DependentUpon>Inicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Partida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Partida.Designer.cs">
+      <DependentUpon>Partida.cs</DependentUpon>
+    </Compile>
     <Compile Include="perfil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +89,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +111,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Water.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WaterMiss.png" />
+    <None Include="Resources\BattleshipHit.png" />
+    <Content Include="SwiPlCs.dll" />
+    <Content Include="SwiPlCs.xml" />
+    <Content Include="SwiPlCs64.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SbsSW.SwiPlCs;
 
 namespace BatallaNaval
 {
@@ -62,7 +63,7 @@ namespace BatallaNaval
 
                     if (InvokeRequired)
                     {
-                        this.Invoke(new Action(() => prueba()));
+                        this.Invoke(new Action(() => partida()));
 
                     }
 
@@ -97,9 +98,12 @@ namespace BatallaNaval
             this.Refresh();
         }
 
-        private void prueba()
+        private void partida()
         {
             this.Hide();
+            Partida form1 = new Partida(tablero, rows, columns);
+            form1.Show();
+            form1.Visible = true;
         }
 
         public void cargar()
@@ -147,10 +151,14 @@ namespace BatallaNaval
                     barcos++;
                     button.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Battleship));
                     button.Name = "1";
+                    if (barcos == MaxBarcos)
+                        button1.Enabled = true;
                 }
             }
             else if(button.Name == "1") {
                 barcos--;
+                if (barcos < MaxBarcos)
+                    button1.Enabled = false;
                 this.tablero[int.Parse(c[0]), int.Parse(c[1])] = 0;
                 button.BackgroundImage = ((System.Drawing.Image)(Properties.Resources.Water));
                 button.Name = "0";
@@ -179,11 +187,14 @@ namespace BatallaNaval
         }
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             DialogResult dialogResult = MessageBox.Show("¿Estas Listo?","listo", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 byte[] a = ToByteArray(tablero);
                 cliente.SendMatrix(a);
+               
 
             }
             else if (dialogResult == DialogResult.No)
@@ -198,5 +209,12 @@ namespace BatallaNaval
             cliente.SendString("exit" + perfil.Instance.getname());
             th.Abort();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+       
     }
 }

@@ -21,6 +21,7 @@ namespace Server
         
         static void Main()
         {
+            PlConnection.borrarPl();
             Console.Title = "Server";
             SetupServer();
             Console.ReadLine(); // When we press enter close everything
@@ -203,6 +204,29 @@ namespace Server
                 conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("partida"+temp));
                 conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes("partida" + temp));
             }
+            else if (text.Contains("haybarco"))
+            {
+                string temp = text.Remove(0, 8);
+                string[] lista = temp.Split(',');
+                string respuesta = "";
+                
+                if (current == conectados[partida.getJudador1().getJugador()]) {
+                    respuesta = (PlConnection.hayBarco(int.Parse(lista[0]), int.Parse(lista[1]), partida.getJudador2().getJugador()+".pl")).ToString();
+                    conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes(respuesta));
+                    Console.WriteLine(respuesta);
+                    if (respuesta=="True")
+                        conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes("hit"+temp));
+                }
+                else if (current == conectados[partida.getJudador2().getJugador()])
+                {
+                    respuesta = (PlConnection.hayBarco(int.Parse(lista[0]), int.Parse(lista[1]), partida.getJudador1().getJugador() + ".pl")).ToString();
+                    conectados[partida.getJudador2().getJugador()].Send(Encoding.ASCII.GetBytes(respuesta));
+                    Console.WriteLine(respuesta);
+                    if (respuesta == "True")
+                        conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("hit" + temp));
+                }
+           
+            }
             else
             {
 
@@ -231,6 +255,7 @@ namespace Server
                     
                     partida.getJudador1().setStatus("listo");
                     partida.getJudador1().setMatrix(tablero);
+                    PlConnection.crearMatriz(tablero,partida.getJudador1().getJugador());
                     if (partida.getJudador2().getStatus() == "listo")
                     {
                         conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("partida" ));
@@ -245,6 +270,7 @@ namespace Server
                 {
                     partida.getJudador2().setStatus("listo");
                     partida.getJudador2().setMatrix(tablero);
+                    PlConnection.crearMatriz(tablero, partida.getJudador2().getJugador());
                     if (partida.getJudador1().getStatus() == "listo")
                     {
                         conectados[partida.getJudador1().getJugador()].Send(Encoding.ASCII.GetBytes("partida" ));
